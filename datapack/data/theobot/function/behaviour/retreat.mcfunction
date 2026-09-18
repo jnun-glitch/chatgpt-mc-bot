@@ -1,1 +1,2 @@
-execute if entity @p[distance=..32,tag=!theobot] run function theobot:movement/retreat
+execute if entity @p[distance=..32,tag=!theobot,gamemode=!spectator] run function theobot:movement/retreat
+execute unless entity @p[distance=..32,tag=!theobot,gamemode=!spectator] run player @a[tag=theobot,distance=..0.2,limit=1] stop
