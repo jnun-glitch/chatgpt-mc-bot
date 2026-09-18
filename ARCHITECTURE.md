@@ -1,64 +1,117 @@
 # TheoBot Architecture
 
-Minecraft tick
- -> theobot:tick
- -> bot initialization
- -> perception/target update
- -> memory update
- -> state decision
- -> state action
- -> HeroBot command
- -> fake player
+## Tick pipeline
+
+```text
+minecraft:tick
+    |
+    +-- initialize unready bots
+    |
+    +-- target/update
+    |      |
+    |      +-- nearest real player
+    |      +-- distance
+    |      +-- last-seen memory
+    |
+    +-- memory/age
+    |
+    +-- behaviour/decide
+    |      |
+    |      +-- mode
+    |      +-- target distance
+    |      +-- last-seen timeout
+    |      +-- difficulty cadence
+    |
+    +-- behaviour/act
+           |
+           +-- idle
+           +-- search
+           +-- follow
+           +-- active
+           +-- retreat
+           +-- wander
+                  |
+                  v
+             HeroBot /player
+```
 
 ## State machine
 
-0 IDLE
-1 SEARCH
-2 FOLLOW
-3 ACTIVE
-4 RETREAT
-5 WANDER
-
-ACTIVE is kept as a generic active state in the framework and is not a weapon/combat implementation.
+- `0 IDLE`
+- `1 SEARCH`
+- `2 FOLLOW`
+- `3 ACTIVE`
+- `4 RETREAT`
+- `5 WANDER`
 
 ## Modes
 
-0 AUTO
-1 FOLLOW
-2 ACTIVE
-3 WANDER
-4 STOP
+- `0 AUTO`
+- `1 FOLLOW`
+- `2 ACTIVE`
+- `3 WANDER`
+- `4 STOP`
 
-AUTO chooses between IDLE, SEARCH, FOLLOW and ACTIVE based on target distance. ACTIVE is a neutral action state in this repository.
+AUTO uses target distance to switch between FOLLOW and ACTIVE. If the target disappears, the bot enters SEARCH until the last-seen timeout expires.
 
-## Profiles
+## Multi-bot model
 
-0 BALANCED
-1 AGGRESSIVE
-2 DEFENSIVE
-3 MOBILE
-4 PASSIVE
+The system does not hard-code a specific set of names for the main brain.
 
-Profiles are used for movement/strafe personality and can be extended without changing the lifecycle.
+Each bot is tagged `theobot` and has:
+
+- `tb.id`
+- `tb.enabled`
+- `tb.state`
+- `tb.mode`
+- `tb.profile`
+- `tb.diff`
+- `tb.timer`
+- `tb.repath`
+- `tb.lastseen`
+- `tb.dist`
+- `tb.stuck`
+
+The current execution position identifies the bot for server-side HeroBot commands with a small `distance=..0.2` selector.
 
 ## Memory
 
-Each bot gets a unique tb.id. Last-seen target coordinates are stored under:
+The custom API assigns `tb.id` from the global `#next` counter.
 
+Coordinates are stored in:
+
+```text
 theobot:memory.bots.<id>.x
 theobot:memory.bots.<id>.y
 theobot:memory.bots.<id>.z
+```
 
-theobot:runtime is synchronous scratch storage for macro expansion.
+Macro functions read/write those values synchronously.
 
 ## Navigation
 
-Follow uses HeroBot path entity. Search uses HeroBot path pos toward the last remembered location. Requests are throttled with tb.repath.
+Follow asks HeroBot to path to the nearest eligible real player. A `tb.repath` countdown prevents a new path request every tick.
+
+Search asks HeroBot to path to the last remembered location.
 
 ## Stuck recovery
 
-Every 20 ticks the bot position is sampled. Small horizontal displacement increments tb.stuck. When the threshold is reached the bot stops, jumps once and clears the path timer.
+Every 20 ticks the current position is sampled. Horizontal movement below the threshold increases `tb.stuck`; once the threshold is reached HeroBot is told to stop and jump once.
 
-## Scoreboard design
+## Permission boundary
 
-Objective identifiers use the short tb.* prefix so every identifier remains within Minecraft's scoreboard-objective length restriction.
+HeroBot custom `/player` commands should stay server-side. The datapack therefore uses `execute at`, not `execute as`, for functions that eventually issue HeroBot commands.
+
+## Extension points
+
+New behaviours should follow:
+
+```text
+Perception
+   ->
+Decision
+   ->
+Action
+   ->
+HeroBot execution
+```
