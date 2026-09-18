@@ -1,4 +1,3 @@
-player @s look upon @p[distance=..32,tag=!theobot] eyes delta 3
-player @s move backward
-player @s sprint
-execute if score @s tb.dist matches 801.. run scoreboard players set @s tb.state 0
+execute if entity @p[distance=..32,tag=!theobot,gamemode=!spectator] run player @a[tag=theobot,distance=..0.2,limit=1] look upon @p[distance=..32,tag=!theobot,gamemode=!spectator] eyes delta 3
+execute if entity @p[distance=..32,tag=!theobot,gamemode=!spectator] run player @a[tag=theobot,distance=..0.2,limit=1] move backward
+execute if entity @p[distance=..32,tag=!theobot,gamemode=!spectator] run player @a[tag=theobot,distance=..0.2,limit=1] sprint
