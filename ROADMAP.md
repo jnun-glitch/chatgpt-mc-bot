@@ -1,0 +1,23 @@
+# TheoBot Roadmap
+
+- [x] Phase 0 — analysis/API verification
+- [x] Phase 1 — datapack core
+- [x] Phase 2 — identity + multi-bot spawn
+- [x] Phase 3 — movement
+- [x] Phase 4 — look
+- [x] Phase 5 — jump/autojump
+- [x] Phase 6 — target system
+- [x] Phase 7 — follow
+- [x] Phase 8 — pathfinding
+- [x] Phase 9 — active behaviour framework
+- [x] Phase 10 — behaviour state machine
+- [x] Phase 11 — memory
+- [x] Phase 12 — difficulty
+- [x] Phase 13 — configuration
+- [x] Phase 14 — profiles
+- [x] Phase 15 — menu/UI helpers
+- [x] Phase 16 — debug
+- [x] Phase 17 — performance scheduling
+- [x] Phase 18 — robustness
+- [ ] Phase 19 — live Minecraft QA
+- [ ] Combat/weapon module — intentionally not part of this build

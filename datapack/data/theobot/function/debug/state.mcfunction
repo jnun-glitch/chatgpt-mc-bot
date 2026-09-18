@@ -1,0 +1,1 @@
+execute as @a[tag=theobot] run tellraw @a [{"text":"Bot ","color":"aqua"},{"selector":"@s"},{"text":" state=","color":"gray"},{"score":{"name":"@s","objective":"tb.state"}},{"text":" lastSeen=","color":"gray"},{"score":{"name":"@s","objective":"tb.lastseen"}}]

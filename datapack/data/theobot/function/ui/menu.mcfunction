@@ -1,0 +1,8 @@
+tellraw @s [{"text":"===== TheoBot =====","color":"gold","bold":true}]
+tellraw @s [{"text":"Spawn: ","color":"gray"},{"text":"/function theobot:bot/spawn","color":"yellow"}]
+tellraw @s [{"text":"Auto: ","color":"gray"},{"text":"/function theobot:config/mode/auto","color":"yellow"}]
+tellraw @s [{"text":"Follow: ","color":"gray"},{"text":"/function theobot:config/mode/follow","color":"yellow"}]
+tellraw @s [{"text":"Wander: ","color":"gray"},{"text":"/function theobot:config/mode/wander","color":"yellow"}]
+tellraw @s [{"text":"Stop: ","color":"gray"},{"text":"/function theobot:config/mode/stop","color":"yellow"}]
+tellraw @s [{"text":"Debug: ","color":"gray"},{"text":"/function theobot:debug/status","color":"yellow"}]
+tellraw @s [{"text":"Reset: ","color":"gray"},{"text":"/function theobot:bot/reset","color":"yellow"}]

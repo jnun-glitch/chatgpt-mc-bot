@@ -1,4 +1,3 @@
-# TheoBot load hook
 scoreboard objectives add tb.phase dummy
 scoreboard objectives add tb.tick dummy
 scoreboard objectives add tb.next dummy
