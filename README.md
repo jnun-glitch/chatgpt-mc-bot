@@ -1,0 +1,2 @@
+# chatgpt-mc-bot
+bot
