@@ -1,3 +1,4 @@
+# Core objectives for TheoBot.
 scoreboard objectives add tb.phase dummy
 scoreboard objectives add tb.tick dummy
 scoreboard objectives add tb.next dummy
@@ -25,6 +26,6 @@ scoreboard objectives add tb.prevz dummy
 scoreboard objectives add tb.dx dummy
 scoreboard objectives add tb.dy dummy
 scoreboard objectives add tb.dz dummy
-
 scoreboard players set #phase tb.phase 18
 scoreboard players set #tick tb.tick 0
+tellraw @a [{"text":"[TheoBot] ","color":"gold","bold":true},{"text":"Core loaded.","color":"green"}]
