@@ -1,57 +1,60 @@
 # Testing
 
-## Static
+## Static validation
 
-CI validates:
-- all JSON parses
-- load and tick tags exist
-- tagged functions exist
-- required files exist
-- scoreboard objective identifiers are at most 16 characters
-- function files are not empty
+Run from repository root:
 
-## Live order
+```text
+python tools/validate_datapack.py
+```
 
-1. Install datapack.
-2. Run /reload.
-3. Run /function theobot:debug/status.
-4. Spawn a bot.
-5. Verify the theobot tag and tb.id.
-6. Test wander.
-7. Test follow.
-8. Test path navigation around a simple obstacle.
-9. Test last-seen memory and SEARCH.
-10. Spawn two bots and verify separate ids and independent scores.
-11. Test stuck recovery.
-12. Run bot/reset.
+The validator checks:
+
+- JSON syntax
+- pack version
+- required load/tick files
+- all referenced datapack functions
+- empty functions
+- scoreboard objective identifier length
+- HeroBot source-context anti-patterns
+
+## Live smoke test
+
+1. Install `datapack/` in a Minecraft 1.21.11 world with HeroBot.
+2. `/reload`
+3. `/function theobot:setup`
+4. `/function theobot:bot/spawn`
+5. `/function theobot:debug/status`
+6. Test `/function theobot:config/mode/wander`.
+7. Test `/function theobot:config/mode/follow`.
+8. Walk behind an obstacle and verify SEARCH.
+9. Test a simple obstacle for Auto-Jump.
+10. Run `/function theobot:bot/spawn_all`.
+11. Verify distinct `tb.id` values.
+12. Test `/function theobot:bot/reset`.
 
 ## Expected
 
 Spawn:
 - fake player appears
-- correct identity is initialized
-- no existing human player is tagged
+- bot receives `theobot` and `theobot_ready`
+- unique `tb.id`
 
 Movement:
-- wander moves forward
-- random look changes are visible
-- autojump is active
-
-Follow:
-- nearest non-bot player inside 32 blocks is selected
-- bot looks at the target
-- path entity is requested outside the preferred distance
+- wander changes direction and moves forward
+- follow looks at the nearest eligible player
+- path requests happen only when needed
+- auto-jump is enabled
 
 Memory:
-- last-seen position is stored per bot id
-- SEARCH tries the remembered location
-- state returns to IDLE after memory expiry
+- last-seen coordinates update while the target is present
+- SEARCH heads toward the remembered coordinates
+- memory expires after the configured window
 
-Robustness:
-- /reload keeps existing bot runtime state
-- reset disconnects managed bots
-- multiple bots do not share scoreboard state
+Multi-bot:
+- multiple bots retain independent score state
+- each bot receives its own memory ID
 
-## Boundary
+## Test boundary
 
-The exact Minecraft server/mod stack cannot be booted from this environment, so live QA remains an explicit final step.
+Live Minecraft server execution is not performed in this environment, so integration must be verified in-game.
