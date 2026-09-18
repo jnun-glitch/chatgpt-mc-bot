@@ -1,3 +1,3 @@
-$execute positioned $(x) $(y) $(z) run player @s look at ~ ~ ~ delta 8
-$execute positioned $(x) $(y) $(z) run player @s path pos ~ ~ ~
-$scoreboard players set @s tb.repath 20
+$player @a[tag=theobot,distance=..0.2,limit=1] look at $(x) $(y) $(z) delta 8
+$player @a[tag=theobot,distance=..0.2,limit=1] path pos $(x) $(y) $(z)
+$scoreboard players set @a[tag=theobot,distance=..0.2,limit=1] tb.repath 20
