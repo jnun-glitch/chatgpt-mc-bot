@@ -7,11 +7,12 @@
     "width": 340
   },
   "pause": false,
+  "after_action": "none",
   "yes": {
     "label": "Reset ausführen",
     "action": {
       "type": "run_command",
-      "command": "function theobot:bot/reset"
+      "command": "function theobot:ui/reset_confirm"
     }
   },
   "no": {
