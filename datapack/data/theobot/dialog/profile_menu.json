@@ -1,0 +1,68 @@
+{
+  "type": "minecraft:multi_action",
+  "title": "TheoBot • Profile",
+  "external_title": "TheoBot • Profile",
+  "body": {
+    "type": "minecraft:plain_message",
+    "contents": "Profile ändern bevorzugte Folge-Distanz und Sprint-Verhalten.\nDie Profilnamen bleiben mit der bestehenden TheoBot-Konfiguration kompatibel.",
+    "width": 360
+  },
+  "pause": false,
+  "after_action": "none",
+  "columns": 2,
+  "actions": [
+    {
+      "label": "BALANCED",
+      "tooltip": "Ausgewogenes Standardprofil.",
+      "width": 180,
+      "action": {
+        "type": "run_command",
+        "command": "function theobot:config/profile/balanced"
+      }
+    },
+    {
+      "label": "AGGRESSIVE",
+      "tooltip": "Kürzere bevorzugte Distanz und aktiveres Bewegungsverhalten.",
+      "width": 180,
+      "action": {
+        "type": "run_command",
+        "command": "function theobot:config/profile/aggressive"
+      }
+    },
+    {
+      "label": "DEFENSIVE",
+      "tooltip": "Mehr Abstand und vorsichtigeres Bewegungsverhalten.",
+      "width": 180,
+      "action": {
+        "type": "run_command",
+        "command": "function theobot:config/profile/defensive"
+      }
+    },
+    {
+      "label": "MOBILE",
+      "tooltip": "Mobileres Verhalten und mehr Sprint-Nutzung.",
+      "width": 180,
+      "action": {
+        "type": "run_command",
+        "command": "function theobot:config/profile/mobile"
+      }
+    },
+    {
+      "label": "PASSIVE",
+      "tooltip": "Ruhigeres Verhalten und größere Folge-Distanz.",
+      "width": 180,
+      "action": {
+        "type": "run_command",
+        "command": "function theobot:config/profile/passive"
+      }
+    }
+  ],
+  "exit_action": {
+    "label": "← Zurück",
+    "width": 180,
+    "action": {
+      "type": "show_dialog",
+      "dialog": "theobot:main"
+    }
+  }
+}
