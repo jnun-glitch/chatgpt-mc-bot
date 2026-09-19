@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:confirmation",
+  "title": "TheoBot • Reset bestätigen",
+  "body": {
+    "type": "minecraft:plain_message",
+    "contents": "Soll der Reset ausgeführt werden?\nAlle verwalteten Bots werden gestoppt und getrennt.",
+    "width": 340
+  },
+  "pause": false,
+  "yes": {
+    "label": "Reset ausführen",
+    "action": {
+      "type": "run_command",
+      "command": "function theobot:bot/reset"
+    }
+  },
+  "no": {
+    "label": "Abbrechen",
+    "action": {
+      "type": "show_dialog",
+      "dialog": "theobot:bot_menu"
+    }
+  }
+}
