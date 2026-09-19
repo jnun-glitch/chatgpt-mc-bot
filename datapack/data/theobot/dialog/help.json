@@ -15,5 +15,6 @@
       "dialog": "theobot:main"
     }
   },
-  "pause": false
+  "pause": false,
+  "after_action": "none"
 }
