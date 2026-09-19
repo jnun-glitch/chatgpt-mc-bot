@@ -9,6 +9,9 @@ scoreboard players set @a[tag=theobot,distance=..0.2,limit=1] tb.check 0
 scoreboard players set @a[tag=theobot,distance=..0.2,limit=1] tb.repath 0
 scoreboard players set @a[tag=theobot,distance=..0.2,limit=1] tb.lastseen 0
 scoreboard players set @a[tag=theobot,distance=..0.2,limit=1] tb.dist 0
+scoreboard players set @a[tag=theobot,distance=..0.2,limit=1] tb.hdist 0
+scoreboard players set @a[tag=theobot,distance=..0.2,limit=1] tb.vdist 0
+scoreboard players set @a[tag=theobot,distance=..0.2,limit=1] tb.ping 50
 scoreboard players set @a[tag=theobot,distance=..0.2,limit=1] tb.hp 200
 scoreboard players set @a[tag=theobot,distance=..0.2,limit=1] tb.rng 0
 scoreboard players set @a[tag=theobot,distance=..0.2,limit=1] tb.stuck 0
@@ -19,6 +22,7 @@ scoreboard players operation @a[tag=theobot,distance=..0.2,limit=1] tb.prevx = @
 scoreboard players operation @a[tag=theobot,distance=..0.2,limit=1] tb.prevy = @a[tag=theobot,distance=..0.2,limit=1] tb.py
 scoreboard players operation @a[tag=theobot,distance=..0.2,limit=1] tb.prevz = @a[tag=theobot,distance=..0.2,limit=1] tb.pz
 player @a[tag=theobot,distance=..0.2,limit=1] autojump true
+player @a[tag=theobot,distance=..0.2,limit=1] ping 50
 player @a[tag=theobot,distance=..0.2,limit=1] stop
 function theobot:loadout/apply
 tag @a[tag=theobot,distance=..0.2,limit=1] add theobot_ready
