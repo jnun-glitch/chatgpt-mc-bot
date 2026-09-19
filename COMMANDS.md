@@ -1,5 +1,14 @@
 # TheoBot Commands
 
+## Custom GUI
+
+Mit dem optionalen `theobot-ui`-Client-Modul:
+
+- **O** = GUI öffnen
+- `/theobotui` = GUI öffnen
+
+Die Buttons führen die vorhandenen TheoBot-Datapack-Funktionen aus.
+
 ## Start
 
 ```mcfunction
