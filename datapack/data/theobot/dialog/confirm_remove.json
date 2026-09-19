@@ -7,11 +7,12 @@
     "width": 340
   },
   "pause": false,
+  "after_action": "none",
   "yes": {
     "label": "Alle entfernen",
     "action": {
       "type": "run_command",
-      "command": "function theobot:bot/remove_all"
+      "command": "function theobot:ui/remove_confirm"
     }
   },
   "no": {
