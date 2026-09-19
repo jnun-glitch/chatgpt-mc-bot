@@ -4,6 +4,7 @@ import re
 import sys
 
 ROOT = Path(__file__).resolve().parents[1] / "datapack"
+DATA_ROOT = ROOT / "data"
 errors = []
 
 pack_path = ROOT / "pack.mcmeta"
@@ -21,11 +22,19 @@ else:
     except Exception as exc:
         errors.append(f"Invalid pack.mcmeta: {exc}")
 
-function_root = ROOT / "data"
-functions = {
-    p.relative_to(function_root).as_posix()
-    for p in function_root.rglob("*.mcfunction")
-}
+function_root = DATA_ROOT
+function_files = list(function_root.rglob("*.mcfunction"))
+
+# Store both filesystem-relative paths and real Minecraft function IDs.
+functions = {p.relative_to(function_root).as_posix() for p in function_files}
+function_ids = set()
+for path in function_files:
+    rel = path.relative_to(function_root)
+    if len(rel.parts) < 3 or rel.parts[1] != "function":
+        continue
+    namespace = rel.parts[0]
+    function_path = Path(*rel.parts[2:]).with_suffix("").as_posix()
+    function_ids.add(f"{namespace}:{function_path}")
 
 for rel in (
     "minecraft/tags/function/load.json",
@@ -40,19 +49,17 @@ for rel in (
             for ref in data.get("values", []):
                 if ref.startswith("#"):
                     continue
-                ns, fn = ref.split(":", 1)
-                expected = f"{ns}/function/{fn}.mcfunction"
-                if expected not in functions:
+                if ref not in function_ids:
                     errors.append(f"Missing tagged function: {ref}")
         except Exception as exc:
             errors.append(f"Invalid tag file {rel}: {exc}")
 
 required = [
     ROOT / "pack.mcmeta",
-    ROOT / "data/theobot/function/load.mcfunction",
-    ROOT / "data/theobot/function/tick.mcfunction",
-    ROOT / "data/theobot/function/api/spawn.mcfunction",
-    ROOT / "data/theobot/function/api/spawn_macro.mcfunction",
+    DATA_ROOT / "theobot/function/load.mcfunction",
+    DATA_ROOT / "theobot/function/tick.mcfunction",
+    DATA_ROOT / "theobot/function/api/spawn.mcfunction",
+    DATA_ROOT / "theobot/function/api/spawn_macro.mcfunction",
 ]
 
 for path in required:
@@ -60,17 +67,15 @@ for path in required:
         errors.append(f"Missing required file: {path}")
 
 ref_pattern = re.compile(r"(?<![\w/])([a-z0-9_.-]+:[a-z0-9_./-]+)(?![\w/])")
-for path in ROOT.rglob("*.mcfunction"):
+for path in function_files:
     text = path.read_text(encoding="utf-8")
     if not text.strip():
         errors.append(f"Empty function: {path}")
     for ref in ref_pattern.findall(text):
-        # Skip Minecraft commands/resources and scoreboard objective names.
         if ref.startswith("minecraft:"):
             continue
-        if ref not in {f"theobot:{x.split('/function/',1)[1][:-10]}" for x in functions if x.startswith("theobot/function/")}:
-            # The regex can also see names that are not function references.
-            if re.search(rf"\bfunction\s+{re.escape(ref)}\b", text):
+        if re.search(rf"\bfunction\s+{re.escape(ref)}\b", text):
+            if ref not in function_ids:
                 errors.append(f"Missing function reference: {ref} in {path}")
 
     if re.search(r"\bplayer\s+@s\b", text):
@@ -79,7 +84,7 @@ for path in ROOT.rglob("*.mcfunction"):
         errors.append(f"HeroBot source-context violation (execute as ... run player): {path}")
 
 objective_names = set(re.findall(r"\btb\.[A-Za-z0-9_.-]+\b", "\n".join(
-    p.read_text(encoding="utf-8") for p in ROOT.rglob("*.mcfunction")
+    p.read_text(encoding="utf-8") for p in function_files
 )))
 for objective in objective_names:
     if len(objective) > 16:
@@ -95,6 +100,6 @@ if errors:
 
 print(
     f"VALIDATION PASSED: "
-    f"{len(functions)} functions, "
+    f"{len(function_files)} functions, "
     f"{len(list(ROOT.rglob('*.json')))} JSON files"
 )
