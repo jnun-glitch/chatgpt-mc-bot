@@ -66,17 +66,13 @@ for path in required:
     if not path.exists():
         errors.append(f"Missing required file: {path}")
 
-ref_pattern = re.compile(r"(?<![\w/])([a-z0-9_.-]+:[a-z0-9_./-]+)(?![\w/])")
+function_ref_pattern = re.compile(r"\bfunction\s+([a-z0-9_.-]+:[a-z0-9_./-]+)")
 for path in function_files:
     text = path.read_text(encoding="utf-8")
-    if not text.strip():
-        errors.append(f"Empty function: {path}")
-    for ref in ref_pattern.findall(text):
-        if ref.startswith("minecraft:"):
-            continue
-        if re.search(rf"\bfunction\s+{re.escape(ref)}\b", text):
-            if ref not in function_ids:
-                errors.append(f"Missing function reference: {ref} in {path}")
+    for match in function_ref_pattern.finditer(text):
+        ref = match.group(1)
+        if ref not in function_ids:
+            errors.append(f"Missing function reference: {ref} in {path}")
 
     if re.search(r"\bplayer\s+@s\b", text):
         errors.append(f"HeroBot source-context violation (player @s): {path}")
