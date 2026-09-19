@@ -1,13 +1,16 @@
 # TheoBot Commands
 
-## Custom GUI
+## Native Dialog UI
 
-Mit dem optionalen `theobot-ui`-Client-Modul:
+The TheoBot menu is a native Minecraft Dialog. No client-side UI mod is required.
 
-- **O** = GUI öffnen
-- `/theobotui` = GUI öffnen
+Open it manually:
 
-Die Buttons führen die vorhandenen TheoBot-Datapack-Funktionen aus.
+```mcfunction
+/function theobot:ui/menu
+```
+
+Minecraft also exposes the main dialog through the native Quick Actions key and pause-screen additions.
 
 ## Start
 
@@ -15,6 +18,20 @@ Die Buttons führen die vorhandenen TheoBot-Datapack-Funktionen aus.
 /reload
 /function theobot:ui/menu
 /function theobot:debug/status
+```
+
+## Dialog files
+
+```text
+datapack/data/theobot/dialog/main.json
+datapack/data/theobot/dialog/bot_menu.json
+datapack/data/theobot/dialog/mode_menu.json
+datapack/data/theobot/dialog/difficulty_menu.json
+datapack/data/theobot/dialog/profile_menu.json
+datapack/data/theobot/dialog/diagnostics.json
+datapack/data/theobot/dialog/help.json
+datapack/data/theobot/dialog/confirm_reset.json
+datapack/data/theobot/dialog/confirm_remove.json
 ```
 
 ## Spawn
