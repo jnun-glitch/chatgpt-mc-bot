@@ -186,6 +186,12 @@ python tools/validate_datapack.py
 
 Live Minecraft integration is a separate final QA step and is not claimed as executed in this environment.
 
+## Custom GUI
+
+Das Repository enthält zusätzlich das optionale Fabric-Client-Modul `theobot-ui`. Es ersetzt das alte Chat-/`tellraw`-Menü durch ein echtes Minecraft-`Screen` mit Seiten und Buttons. Die GUI öffnest du mit **O** oder `/theobotui`. Das Datapack und HeroBot bleiben weiterhin erforderlich.
+
+Zum Bauen siehe `theobot-ui/README.md`. Der GitHub-Workflow baut die Client-JAR automatisch.
+
 ## Scope
 
 This repository implements the movement/navigation/NPC framework from the staged plan plus a HeroBot-backed training mode. Attack/weapon automation is deliberately not included.
