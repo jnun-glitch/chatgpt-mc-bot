@@ -17,6 +17,8 @@
 /function theobot:bot/spawn4
 /function theobot:bot/spawn5
 /function theobot:bot/spawn_all
+/function theobot:bot/spawn_training
+/function theobot:bot/spawn_training_all
 ```
 
 Custom:
@@ -31,6 +33,7 @@ Custom:
 ```mcfunction
 /function theobot:config/mode/auto
 /function theobot:config/mode/follow
+/function theobot:config/mode/training
 /function theobot:config/mode/wander
 /function theobot:config/mode/stop
 ```
@@ -43,6 +46,13 @@ Custom:
 /function theobot:config/difficulty/hard
 /function theobot:config/difficulty/custom
 ```
+
+Difficulty presets also change the HeroBot simulated ping used by the training behaviour:
+
+- EASY = 100 ms
+- NORMAL = 50 ms
+- HARD = 25 ms
+- CUSTOM = 0 ms
 
 ## Profiles
 
