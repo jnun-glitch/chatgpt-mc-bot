@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:confirmation",
+  "title": "TheoBot • Entfernen bestätigen",
+  "body": {
+    "type": "minecraft:plain_message",
+    "contents": "Alle verwalteten TheoBot-Bots werden entfernt.\nMöchtest du fortfahren?",
+    "width": 340
+  },
+  "pause": false,
+  "yes": {
+    "label": "Alle entfernen",
+    "action": {
+      "type": "run_command",
+      "command": "function theobot:bot/remove_all"
+    }
+  },
+  "no": {
+    "label": "Abbrechen",
+    "action": {
+      "type": "show_dialog",
+      "dialog": "theobot:bot_menu"
+    }
+  }
+}
