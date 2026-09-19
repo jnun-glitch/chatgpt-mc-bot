@@ -76,7 +76,7 @@ The custom API assigns a unique numeric `tb.id` and initializes the bot.
 
 AUTO selects between IDLE, SEARCH, FOLLOW and ACTIVE based on perception.
 
-TRAINING uses the ACTIVE state as a non-combat practice mode: the bot can detect nearby players, smoothly look at them, navigate/follow, use Auto-Jump and simulate latency, but this datapack does not automate attacks.
+TRAINING is a dedicated non-combat practice mode. It follows a nearby real player when needed, smoothly looks at the target, uses HeroBot pathing and Auto-Jump, and switches to close-range observation without attack automation.
 
 ## Profiles
 
