@@ -1,7 +1,7 @@
 # Training mode is a non-combat practice mode.
-function theobot:herobot/control with {selector:"@a[tag=theobot]",action:"path stop"}
-function theobot:herobot/control with {selector:"@a[tag=theobot]",action:"stop"}
-function theobot:herobot/control with {selector:"@a[tag=theobot]",action:"autojump true"}
+function theobot:herobot/control {selector:"@a[tag=theobot]",action:"path stop"}
+function theobot:herobot/control {selector:"@a[tag=theobot]",action:"stop"}
+function theobot:herobot/control {selector:"@a[tag=theobot]",action:"autojump true"}
 scoreboard players set @a[tag=theobot] tb.mode 5
 scoreboard players set @a[tag=theobot] tb.state 0
 scoreboard players set @a[tag=theobot] tb.timer 0
