@@ -14,6 +14,9 @@ scoreboard objectives add tb.check dummy
 scoreboard objectives add tb.repath dummy
 scoreboard objectives add tb.lastseen dummy
 scoreboard objectives add tb.dist dummy
+scoreboard objectives add tb.hdist dummy
+scoreboard objectives add tb.vdist dummy
+scoreboard objectives add tb.ping dummy
 scoreboard objectives add tb.hp dummy
 scoreboard objectives add tb.rng dummy
 scoreboard objectives add tb.stuck dummy
