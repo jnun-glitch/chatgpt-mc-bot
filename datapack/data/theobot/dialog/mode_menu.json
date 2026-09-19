@@ -1,0 +1,68 @@
+{
+  "type": "minecraft:multi_action",
+  "title": "TheoBot • Verhalten",
+  "external_title": "TheoBot • Verhalten",
+  "body": {
+    "type": "minecraft:plain_message",
+    "contents": "Verhaltensmodus wählen.\nAUTO verbindet Wahrnehmung und Entscheidungen; TRAINING ist für Bewegung, Blick und Navigation ohne Angriff.",
+    "width": 360
+  },
+  "pause": false,
+  "after_action": "none",
+  "columns": 2,
+  "actions": [
+    {
+      "label": "AUTO",
+      "tooltip": "Automatische Zustandswahl aus IDLE, SEARCH, FOLLOW und ACTIVE.",
+      "width": 180,
+      "action": {
+        "type": "run_command",
+        "command": "function theobot:config/mode/auto"
+      }
+    },
+    {
+      "label": "FOLLOW",
+      "tooltip": "Fokus auf das Folgen des nächstgelegenen passenden Spielers.",
+      "width": 180,
+      "action": {
+        "type": "run_command",
+        "command": "function theobot:config/mode/follow"
+      }
+    },
+    {
+      "label": "TRAINING",
+      "tooltip": "Bewegungs- und Navigationsmodus ohne Angriff.",
+      "width": 180,
+      "action": {
+        "type": "run_command",
+        "command": "function theobot:config/mode/training"
+      }
+    },
+    {
+      "label": "WANDER",
+      "tooltip": "Freies Wandern mit HeroBot-Navigation.",
+      "width": 180,
+      "action": {
+        "type": "run_command",
+        "command": "function theobot:config/mode/wander"
+      }
+    },
+    {
+      "label": "STOP",
+      "tooltip": "Bewegung und Pfadsteuerung aller TheoBot-Bots stoppen.",
+      "width": 180,
+      "action": {
+        "type": "run_command",
+        "command": "function theobot:config/mode/stop"
+      }
+    }
+  ],
+  "exit_action": {
+    "label": "← Zurück",
+    "width": 180,
+    "action": {
+      "type": "show_dialog",
+      "dialog": "theobot:main"
+    }
+  }
+}
