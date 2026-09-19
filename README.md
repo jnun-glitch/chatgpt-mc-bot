@@ -105,7 +105,7 @@ Difficulty changes decision cadence and HeroBot's simulated ping.
 
 The integration is documented in [`docs/HEROBOT_MAPPING.md`](docs/HEROBOT_MAPPING.md).
 
-The implementation follows HeroBot's documented fake-player model: spawn a server-side player, target bots with selectors, then use HeroBot player controls for movement, look, Auto-Jump, path requests, stop/sprint and ping. citeturn247830view0
+The implementation follows HeroBot's documented fake-player model: spawn a server-side player, target bots with selectors, then use HeroBot player controls for movement, look, Auto-Jump, path requests, stop/sprint and ping.
 
 ## Diagnostics
 
