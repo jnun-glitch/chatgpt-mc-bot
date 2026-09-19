@@ -43,6 +43,18 @@ Five separated starter bots:
 /function theobot:bot/spawn_all
 ```
 
+Single training bot:
+
+```mcfunction
+/function theobot:bot/spawn_training
+```
+
+Five starter bots directly in training mode:
+
+```mcfunction
+/function theobot:bot/spawn_training_all
+```
+
 Custom name:
 
 ```mcfunction
@@ -57,11 +69,14 @@ The custom API assigns a unique numeric `tb.id` and initializes the bot.
 ```mcfunction
 /function theobot:config/mode/auto
 /function theobot:config/mode/follow
+/function theobot:config/mode/training
 /function theobot:config/mode/wander
 /function theobot:config/mode/stop
 ```
 
 AUTO selects between IDLE, SEARCH, FOLLOW and ACTIVE based on perception.
+
+TRAINING uses the ACTIVE state as a non-combat practice mode: the bot can detect nearby players, smoothly look at them, navigate/follow, use Auto-Jump and simulate latency, but this datapack does not automate attacks.
 
 ## Profiles
 
@@ -73,7 +88,7 @@ AUTO selects between IDLE, SEARCH, FOLLOW and ACTIVE based on perception.
 /function theobot:config/profile/passive
 ```
 
-Profiles change the preferred follow distance and sprint behaviour.
+Profiles change preferred follow distance and sprint behaviour.
 
 ## Difficulty
 
@@ -84,7 +99,13 @@ Profiles change the preferred follow distance and sprint behaviour.
 /function theobot:config/difficulty/custom
 ```
 
-Difficulty changes the decision cadence.
+Difficulty changes decision cadence and HeroBot's simulated ping.
+
+## HeroBot mapping
+
+The integration is documented in [`docs/HEROBOT_MAPPING.md`](docs/HEROBOT_MAPPING.md).
+
+The implementation follows HeroBot's documented fake-player model: spawn a server-side player, target bots with selectors, then use HeroBot player controls for movement, look, Auto-Jump, path requests, stop/sprint and ping. citeturn247830view0
 
 ## Diagnostics
 
@@ -102,7 +123,11 @@ Difficulty changes the decision cadence.
 Minecraft tick
    |
    +-- perception / target
-   +-- memory
+   |      +-- 3D distance
+   |      +-- horizontal distance
+   |      +-- vertical distance
+   |      +-- last-seen memory
+   |
    +-- decision
    +-- behaviour
    |
@@ -112,6 +137,8 @@ Minecraft tick
           +-- look
           +-- jump/autojump
           +-- pathfinding
+          +-- sprint
+          +-- simulated ping
           |
           v
       Fake ServerPlayer
@@ -161,4 +188,4 @@ Live Minecraft integration is a separate final QA step and is not claimed as exe
 
 ## Scope
 
-This repository implements the complete movement/navigation/NPC framework from the staged plan. Weapon/attack automation is deliberately not included.
+This repository implements the movement/navigation/NPC framework from the staged plan plus a HeroBot-backed training mode. Attack/weapon automation is deliberately not included.
