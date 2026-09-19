@@ -21,8 +21,8 @@ execute store result score @a[tag=theobot,distance=..0.2,limit=1] tb.pz run data
 scoreboard players operation @a[tag=theobot,distance=..0.2,limit=1] tb.prevx = @a[tag=theobot,distance=..0.2,limit=1] tb.px
 scoreboard players operation @a[tag=theobot,distance=..0.2,limit=1] tb.prevy = @a[tag=theobot,distance=..0.2,limit=1] tb.py
 scoreboard players operation @a[tag=theobot,distance=..0.2,limit=1] tb.prevz = @a[tag=theobot,distance=..0.2,limit=1] tb.pz
-function theobot:herobot/control with {selector:"@a[tag=theobot,distance=..0.2,limit=1]",action:"autojump true"}
-function theobot:herobot/control with {selector:"@a[tag=theobot,distance=..0.2,limit=1]",action:"ping 50"}
-function theobot:herobot/control with {selector:"@a[tag=theobot,distance=..0.2,limit=1]",action:"stop"}
+function theobot:herobot/control {selector:"@a[tag=theobot,distance=..0.2,limit=1]",action:"autojump true"}
+function theobot:herobot/control {selector:"@a[tag=theobot,distance=..0.2,limit=1]",action:"ping 50"}
+function theobot:herobot/control {selector:"@a[tag=theobot,distance=..0.2,limit=1]",action:"stop"}
 function theobot:loadout/apply
 tag @a[tag=theobot,distance=..0.2,limit=1] add theobot_ready
