@@ -26,8 +26,37 @@ Then run:
 ```mcfunction
 /reload
 /function theobot:ui/menu
-/function theobot:bot/spawn
 ```
+
+The menu is a native Minecraft Dialog supplied by the datapack. No client-side TheoBot GUI mod is required.
+
+## Native Dialog UI
+
+The TheoBot UI lives in:
+
+```text
+datapack/data/theobot/dialog/
+```
+
+Main entry point:
+
+```mcfunction
+/function theobot:ui/menu
+```
+
+The same main dialog is also exposed through Minecraft's native Quick Actions key and the pause-screen additions tag.
+
+The UI contains:
+
+- Bot management
+- Behaviour modes
+- Difficulty presets
+- Profiles
+- Diagnostics
+- Help
+- Confirmation dialogs for reset/removal
+
+Buttons use Minecraft's native Dialog actions and call the existing TheoBot functions directly.
 
 ## Spawn
 
@@ -185,12 +214,6 @@ python tools/validate_datapack.py
 ```
 
 Live Minecraft integration is a separate final QA step and is not claimed as executed in this environment.
-
-## Custom GUI
-
-Das Repository enthält zusätzlich das optionale Fabric-Client-Modul `theobot-ui`. Es ersetzt das alte Chat-/`tellraw`-Menü durch ein echtes Minecraft-`Screen` mit Seiten und Buttons. Die GUI öffnest du mit **O** oder `/theobotui`. Das Datapack und HeroBot bleiben weiterhin erforderlich.
-
-Zum Bauen siehe `theobot-ui/README.md`. Der GitHub-Workflow baut die Client-JAR automatisch.
 
 ## Scope
 
