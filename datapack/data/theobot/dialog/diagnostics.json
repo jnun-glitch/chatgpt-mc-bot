@@ -1,0 +1,68 @@
+{
+  "type": "minecraft:multi_action",
+  "title": "TheoBot • Diagnose",
+  "external_title": "TheoBot • Diagnose",
+  "body": {
+    "type": "minecraft:plain_message",
+    "contents": "Werkzeuge zum Prüfen des laufenden Systems.\nDie vorhandenen Diagnose-Funktionen liefern Details zu State, Target, Path und Runtime-Werten.",
+    "width": 360
+  },
+  "pause": false,
+  "after_action": "none",
+  "columns": 2,
+  "actions": [
+    {
+      "label": "📊 Status",
+      "tooltip": "Zeigt Phase, Ticks und pro-Bot Diagnosewerte.",
+      "width": 180,
+      "action": {
+        "type": "run_command",
+        "command": "function theobot:debug/status"
+      }
+    },
+    {
+      "label": "🧠 State",
+      "tooltip": "Zeigt den aktuellen Verhalten-State.",
+      "width": 180,
+      "action": {
+        "type": "run_command",
+        "command": "function theobot:debug/state"
+      }
+    },
+    {
+      "label": "🎯 Target",
+      "tooltip": "Zeigt die aktuelle Zielauswahl.",
+      "width": 180,
+      "action": {
+        "type": "run_command",
+        "command": "function theobot:debug/target"
+      }
+    },
+    {
+      "label": "🧭 Path",
+      "tooltip": "Zeigt die aktuelle Pfad-/Navigationsdiagnose.",
+      "width": 180,
+      "action": {
+        "type": "run_command",
+        "command": "function theobot:debug/path"
+      }
+    },
+    {
+      "label": "🧹 Runtime leeren",
+      "tooltip": "Setzt Diagnose- und Laufzeitwerte zurück.",
+      "width": 180,
+      "action": {
+        "type": "run_command",
+        "command": "function theobot:debug/clear"
+      }
+    }
+  ],
+  "exit_action": {
+    "label": "← Zurück",
+    "width": 180,
+    "action": {
+      "type": "show_dialog",
+      "dialog": "theobot:main"
+    }
+  }
+}
