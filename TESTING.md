@@ -27,11 +27,15 @@ The validator checks:
 5. `/function theobot:debug/status`
 6. Test `/function theobot:config/mode/wander`.
 7. Test `/function theobot:config/mode/follow`.
-8. Walk behind an obstacle and verify SEARCH.
-9. Test a simple obstacle for Auto-Jump.
-10. Run `/function theobot:bot/spawn_all`.
-11. Verify distinct `tb.id` values.
-12. Test `/function theobot:bot/reset`.
+8. Test `/function theobot:config/mode/training`.
+9. Move around the bot and verify smooth LOOK/FOLLOW behaviour.
+10. Walk behind an obstacle and verify SEARCH.
+11. Test a simple obstacle for Auto-Jump.
+12. Test EASY/NORMAL/HARD and verify the bot ping changes.
+13. Run `/function theobot:bot/spawn_training`.
+14. Run `/function theobot:bot/spawn_training_all` in a clean test area.
+15. Verify distinct `tb.id` values.
+16. Test `/function theobot:bot/reset`.
 
 ## Expected
 
@@ -39,6 +43,14 @@ Spawn:
 - fake player appears
 - bot receives `theobot` and `theobot_ready`
 - unique `tb.id`
+
+Training:
+- nearby real player is detected
+- 3D, horizontal and vertical distance values update
+- bot smoothly looks at the target
+- follow/pathing works
+- Auto-Jump is enabled
+- simulated ping matches the selected difficulty
 
 Movement:
 - wander changes direction and moves forward
