@@ -10,7 +10,9 @@ minecraft:tick
     +-- target/update
     |      |
     |      +-- nearest real player
-    |      +-- distance
+    |      +-- 3D distance
+    |      +-- horizontal distance
+    |      +-- vertical distance
     |      +-- last-seen memory
     |
     +-- memory/age
@@ -27,7 +29,7 @@ minecraft:tick
            +-- idle
            +-- search
            +-- follow
-           +-- active
+           +-- active / training
            +-- retreat
            +-- wander
                   |
@@ -48,11 +50,13 @@ minecraft:tick
 
 - `0 AUTO`
 - `1 FOLLOW`
-- `2 ACTIVE`
+- `2 ACTIVE / TRAINING`
 - `3 WANDER`
 - `4 STOP`
 
 AUTO uses target distance to switch between FOLLOW and ACTIVE. If the target disappears, the bot enters SEARCH until the last-seen timeout expires.
+
+TRAINING deliberately reuses the ACTIVE state but keeps the action layer non-combat.
 
 ## Multi-bot model
 
@@ -70,6 +74,9 @@ Each bot is tagged `theobot` and has:
 - `tb.repath`
 - `tb.lastseen`
 - `tb.dist`
+- `tb.hdist`
+- `tb.vdist`
+- `tb.ping`
 - `tb.stuck`
 
 The current execution position identifies the bot for server-side HeroBot commands with a small `distance=..0.2` selector.
@@ -93,6 +100,21 @@ Macro functions read/write those values synchronously.
 Follow asks HeroBot to path to the nearest eligible real player. A `tb.repath` countdown prevents a new path request every tick.
 
 Search asks HeroBot to path to the last remembered location.
+
+## HeroBot feature mapping
+
+The current implementation mirrors the documented HeroBot primitives for:
+
+- fake-player spawning
+- selector-based player control
+- Auto-Jump
+- movement and sprinting
+- smooth look-at-entity behaviour
+- path requests
+- distance measurement
+- simulated ping
+
+See [`docs/HEROBOT_MAPPING.md`](docs/HEROBOT_MAPPING.md).
 
 ## Stuck recovery
 
