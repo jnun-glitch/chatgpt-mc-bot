@@ -50,13 +50,14 @@ minecraft:tick
 
 - `0 AUTO`
 - `1 FOLLOW`
-- `2 ACTIVE / TRAINING`
+- `2 ACTIVE`
 - `3 WANDER`
 - `4 STOP`
+- `5 TRAINING`
 
 AUTO uses target distance to switch between FOLLOW and ACTIVE. If the target disappears, the bot enters SEARCH until the last-seen timeout expires.
 
-TRAINING deliberately reuses the ACTIVE state but keeps the action layer non-combat.
+TRAINING is a dedicated non-combat mode. It uses FOLLOW while the target is farther than 5 blocks, ACTIVE for close-range observation, and SEARCH when the target temporarily disappears.
 
 ## Multi-bot model
 
