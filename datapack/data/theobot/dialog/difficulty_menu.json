@@ -4,56 +4,20 @@
   "external_title": "TheoBot • Schwierigkeit",
   "body": {
     "type": "minecraft:plain_message",
-    "contents": "Schwierigkeits-Presets.\nSie beeinflussen Entscheidungstaktung und den von HeroBot simulierten Ping.",
+    "contents": "Latenz- und Reaktions-Presets.\nDie Stufen verändern Entscheidungs-Taktung und simulierten HeroBot-Ping.",
     "width": 360
   },
   "pause": false,
   "after_action": "none",
   "columns": 2,
   "actions": [
-    {
-      "label": "EASY",
-      "tooltip": "Ruhigeres Verhalten, 100 ms simulierter Ping.",
-      "width": 180,
-      "action": {
-        "type": "run_command",
-        "command": "function theobot:config/difficulty/easy"
-      }
-    },
-    {
-      "label": "NORMAL",
-      "tooltip": "Standardprofil, 50 ms simulierter Ping.",
-      "width": 180,
-      "action": {
-        "type": "run_command",
-        "command": "function theobot:config/difficulty/normal"
-      }
-    },
-    {
-      "label": "HARD",
-      "tooltip": "Schnelleres Verhalten, 25 ms simulierter Ping.",
-      "width": 180,
-      "action": {
-        "type": "run_command",
-        "command": "function theobot:config/difficulty/hard"
-      }
-    },
-    {
-      "label": "CUSTOM",
-      "tooltip": "Projekt-Konfiguration unverändert über das Custom-Preset verwenden.",
-      "width": 180,
-      "action": {
-        "type": "run_command",
-        "command": "function theobot:config/difficulty/custom"
-      }
-    }
+    {"label":"0 • NPC","tooltip":"Sehr langsame Reaktion, 250 ms.","width":180,"action":{"type":"run_command","command":"function theobot:config/difficulty/npc"}},
+    {"label":"1 • EASY","tooltip":"Ruhige Reaktion, 100 ms.","width":180,"action":{"type":"run_command","command":"function theobot:config/difficulty/easy"}},
+    {"label":"2 • NORMAL","tooltip":"Standardreaktion, 50 ms.","width":180,"action":{"type":"run_command","command":"function theobot:config/difficulty/normal"}},
+    {"label":"3 • HARD","tooltip":"Schnelle Reaktion, 25 ms.","width":180,"action":{"type":"run_command","command":"function theobot:config/difficulty/hard"}},
+    {"label":"4 • TIER 1","tooltip":"Sehr schnelle Reaktion, 10 ms.","width":180,"action":{"type":"run_command","command":"function theobot:config/difficulty/tier1"}},
+    {"label":"5 • EXPERT","tooltip":"Minimale simulierte Latenz, 0 ms.","width":180,"action":{"type":"run_command","command":"function theobot:config/difficulty/expert"}},
+    {"label":"6 • CUSTOM","tooltip":"Separater Slot für eigene Timing-Werte.","width":180,"action":{"type":"run_command","command":"function theobot:config/difficulty/custom"}}
   ],
-  "exit_action": {
-    "label": "← Zurück",
-    "width": 180,
-    "action": {
-      "type": "show_dialog",
-      "dialog": "theobot:main"
-    }
-  }
+  "exit_action": {"label":"← Zurück","width":180,"action":{"type":"show_dialog","dialog":"theobot:main"}}
 }
