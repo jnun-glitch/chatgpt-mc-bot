@@ -1,10 +1,10 @@
 {
   "type": "minecraft:multi_action",
-  "title": "TheoBot • Bots",
-  "external_title": "TheoBot • Bots",
+  "title": "TheoBot • Bot-Zentrale",
+  "external_title": "TheoBot • Bot-Zentrale",
   "body": {
     "type": "minecraft:plain_message",
-    "contents": "Bot-Verwaltung\nErzeugt einzelne Bots, fünf Starter-Bots oder einen separaten Trainings-Bot.",
+    "contents": "Bot-Lifecycle\nMehrere getrennte Slots bleiben erhalten; alle Aktionen arbeiten über die bestehende Spawn-API.",
     "width": 360
   },
   "pause": false,
@@ -15,63 +15,48 @@
       "label": "▶ Einen Bot spawnen",
       "tooltip": "Initialisiert einen einzelnen TheoBot-Slot.",
       "width": 180,
-      "action": {
-        "type": "run_command",
-        "command": "function theobot:bot/spawn"
-      }
+      "action": {"type":"run_command","command":"function theobot:bot/spawn"}
     },
     {
       "label": "▶ 5 Bots spawnen",
       "tooltip": "Initialisiert fünf getrennte TheoBot-Slots.",
       "width": 180,
-      "action": {
-        "type": "run_command",
-        "command": "function theobot:bot/spawn_all"
-      }
+      "action": {"type":"run_command","command":"function theobot:bot/spawn_all"}
     },
     {
       "label": "🧪 Training-Bot",
-      "tooltip": "Startet TheoTrainer im dedizierten TRAINING-Modus.",
+      "tooltip": "Startet TheoTrainer mit Navigation, Blick und Auto-Jump.",
       "width": 180,
-      "action": {
-        "type": "run_command",
-        "command": "function theobot:bot/spawn_training"
-      }
+      "action": {"type":"run_command","command":"function theobot:bot/spawn_training"}
     },
     {
       "label": "🧪 5 Training-Bots",
-      "tooltip": "Startet fünf Starter-Bots direkt im TRAINING-Modus.",
+      "tooltip": "Startet fünf Bots direkt im TRAINING-Modus.",
       "width": 180,
-      "action": {
-        "type": "run_command",
-        "command": "function theobot:bot/spawn_training_all"
-      }
+      "action": {"type":"run_command","command":"function theobot:bot/spawn_training_all"}
+    },
+    {
+      "label": "⏹ Alle stoppen",
+      "tooltip": "Stoppt Navigation und Bewegung ohne die Bots zu entfernen.",
+      "width": 180,
+      "action": {"type":"run_command","command":"function theobot:config/movement/stop"}
     },
     {
       "label": "♻ Reset",
-      "tooltip": "Stoppt und trennt alle verwalteten Bots.",
+      "tooltip": "Setzt die verwalteten Bots zurück.",
       "width": 180,
-      "action": {
-        "type": "show_dialog",
-        "dialog": "theobot:confirm_reset"
-      }
+      "action": {"type":"show_dialog","dialog":"theobot:confirm_reset"}
     },
     {
       "label": "🗑 Alle entfernen",
-      "tooltip": "Entfernt alle verwalteten TheoBot-Bots.",
+      "tooltip": "Entfernt alle verwalteten TheoBots.",
       "width": 180,
-      "action": {
-        "type": "show_dialog",
-        "dialog": "theobot:confirm_remove"
-      }
+      "action": {"type":"show_dialog","dialog":"theobot:confirm_remove"}
     }
   ],
   "exit_action": {
     "label": "← Zurück",
     "width": 180,
-    "action": {
-      "type": "show_dialog",
-      "dialog": "theobot:main"
-    }
+    "action": {"type":"show_dialog","dialog":"theobot:main"}
   }
 }
