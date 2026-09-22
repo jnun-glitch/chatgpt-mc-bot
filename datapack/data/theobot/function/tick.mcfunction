@@ -1,4 +1,8 @@
 scoreboard players add #tick tb.tick 1
+scoreboard players set #bots tb.bots 0
+scoreboard players set #ready tb.ready 0
+execute as @a[tag=theobot] run scoreboard players add #bots tb.bots 1
+execute as @a[tag=theobot,tag=theobot_ready] run scoreboard players add #ready tb.ready 1
 
 # Run each bot at its own position while keeping the command source server-side.
 execute at @a[tag=theobot,tag=!theobot_ready] run function theobot:core/init_bot
