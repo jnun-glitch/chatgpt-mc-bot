@@ -2,59 +2,26 @@
 
 ## Native Dialog UI
 
-The TheoBot menu is a native Minecraft Dialog. No client-side UI mod is required.
-
-Open it manually:
+Open the full Control Center:
 
 ```mcfunction
 /function theobot:ui/menu
 ```
 
-Minecraft also exposes the main dialog through the native Quick Actions key and pause-screen additions.
+The UI is entirely native Minecraft Dialog and requires no client-side TheoBot GUI mod.
 
-## Start
-
-```mcfunction
-/reload
-/function theobot:ui/menu
-/function theobot:debug/status
-```
-
-## Dialog files
-
-```text
-datapack/data/theobot/dialog/main.json
-datapack/data/theobot/dialog/bot_menu.json
-datapack/data/theobot/dialog/mode_menu.json
-datapack/data/theobot/dialog/difficulty_menu.json
-datapack/data/theobot/dialog/profile_menu.json
-datapack/data/theobot/dialog/diagnostics.json
-datapack/data/theobot/dialog/help.json
-datapack/data/theobot/dialog/confirm_reset.json
-datapack/data/theobot/dialog/confirm_remove.json
-```
-
-## Spawn
+## Bot lifecycle
 
 ```mcfunction
 /function theobot:bot/spawn
-/function theobot:bot/spawn2
-/function theobot:bot/spawn3
-/function theobot:bot/spawn4
-/function theobot:bot/spawn5
 /function theobot:bot/spawn_all
 /function theobot:bot/spawn_training
 /function theobot:bot/spawn_training_all
+/function theobot:bot/reset
+/function theobot:bot/remove_all
 ```
 
-Custom:
-
-```mcfunction
-/data modify storage theobot:input.name set value "MyBot"
-/function theobot:api/spawn
-```
-
-## Modes
+## Behaviour
 
 ```mcfunction
 /function theobot:config/mode/auto
@@ -67,18 +34,25 @@ Custom:
 ## Difficulty
 
 ```mcfunction
+/function theobot:config/difficulty/npc
 /function theobot:config/difficulty/easy
 /function theobot:config/difficulty/normal
 /function theobot:config/difficulty/hard
+/function theobot:config/difficulty/tier1
+/function theobot:config/difficulty/expert
 /function theobot:config/difficulty/custom
 ```
 
-Difficulty presets also change the HeroBot simulated ping used by the training behaviour:
+The six staged levels mirror the reference map's idea of progressively slower/faster reaction while keeping TheoBot's own state machine and navigation architecture.
 
-- EASY = 100 ms
-- NORMAL = 50 ms
-- HARD = 25 ms
-- CUSTOM = 0 ms
+## Movement
+
+```mcfunction
+/function theobot:config/movement/autojump_on
+/function theobot:config/movement/autojump_off
+/function theobot:config/movement/stop
+/function theobot:config/movement/wander
+```
 
 ## Profiles
 
@@ -90,7 +64,7 @@ Difficulty presets also change the HeroBot simulated ping used by the training b
 /function theobot:config/profile/passive
 ```
 
-## Debug
+## Diagnostics
 
 ```mcfunction
 /function theobot:debug/status
@@ -100,9 +74,4 @@ Difficulty presets also change the HeroBot simulated ping used by the training b
 /function theobot:debug/clear
 ```
 
-## Reset
-
-```mcfunction
-/function theobot:bot/reset
-/function theobot:bot/remove_all
-```
+Status now also reports total managed bots and initialized/ready bots.
