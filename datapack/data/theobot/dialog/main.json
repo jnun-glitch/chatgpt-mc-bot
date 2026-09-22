@@ -1,88 +1,12 @@
 {
   "type": "minecraft:multi_action",
-  "title": "TheoBot",
-  "external_title": "TheoBot",
-  "body": [
-    {
-      "type": "minecraft:plain_message",
-      "contents": "Native Minecraft control panel for TheoBot.\nHeroBot provides the fake-player runtime; the datapack controls behaviour, modes, profiles and diagnostics.",
-      "width": 360
-    },
-    {
-      "type": "minecraft:item",
-      "item": {
-        "id": "minecraft:player_head",
-        "count": 1
-      },
-      "description": {
-        "contents": "1.21.11 • Datapack 94.1",
-        "width": 280
-      },
-      "show_decorations": false,
-      "show_tooltip": true,
-      "width": 32,
-      "height": 32
-    }
-  ],
+  "title": "TheoBot • Control Center",
+  "external_title": "TheoBot • Control Center",
+  "body": "TheoBot Control Center • modular HeroBot management for Minecraft 1.21.11.",
   "pause": false,
   "after_action": "none",
   "columns": 2,
-  "actions": [
-    {
-      "label": "🤖 Bot-Verwaltung",
-      "tooltip": "Bots spawnen, Training starten oder alle Bots zurücksetzen.",
-      "width": 180,
-      "action": {
-        "type": "show_dialog",
-        "dialog": "theobot:bot_menu"
-      }
-    },
-    {
-      "label": "🧠 Verhalten",
-      "tooltip": "AUTO, FOLLOW, TRAINING, WANDER oder STOP wählen.",
-      "width": 180,
-      "action": {
-        "type": "show_dialog",
-        "dialog": "theobot:mode_menu"
-      }
-    },
-    {
-      "label": "⚙ Schwierigkeit",
-      "tooltip": "EASY, NORMAL, HARD oder CUSTOM konfigurieren.",
-      "width": 180,
-      "action": {
-        "type": "show_dialog",
-        "dialog": "theobot:difficulty_menu"
-      }
-    },
-    {
-      "label": "🎛 Profile",
-      "tooltip": "Verhaltensprofile für Distanz und Sprint-Verhalten.",
-      "width": 180,
-      "action": {
-        "type": "show_dialog",
-        "dialog": "theobot:profile_menu"
-      }
-    },
-    {
-      "label": "🔧 Diagnose",
-      "tooltip": "Status, State, Target, Path und Runtime-Daten prüfen.",
-      "width": 180,
-      "action": {
-        "type": "show_dialog",
-        "dialog": "theobot:diagnostics"
-      }
-    },
-    {
-      "label": "📖 Hilfe",
-      "tooltip": "TheoBot-Aufbau und Bedienung.",
-      "width": 180,
-      "action": {
-        "type": "show_dialog",
-        "dialog": "theobot:help"
-      }
-    }
-  ],
+  "actions": [],
   "exit_action": {
     "label": "Schließen",
     "width": 180,
