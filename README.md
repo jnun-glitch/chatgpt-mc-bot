@@ -48,11 +48,12 @@ The same main dialog is also exposed through Minecraft's native Quick Actions ke
 
 The UI contains:
 
-- Bot management
+- Bot lifecycle and multi-bot controls
 - Behaviour modes
-- Difficulty presets
+- 7 difficulty presets (NPC, EASY, NORMAL, HARD, TIER 1, EXPERT, CUSTOM)
+- Movement controls including Auto-Jump and immediate Stop
 - Profiles
-- Diagnostics
+- Diagnostics with live bot/ready counters
 - Help
 - Confirmation dialogs for reset/removal
 
@@ -128,13 +129,22 @@ Profiles change preferred follow distance and sprint behaviour.
 /function theobot:config/difficulty/custom
 ```
 
-Difficulty changes decision cadence and HeroBot's simulated ping.
+Difficulty changes decision cadence and HeroBot's simulated ping. The expanded preset ladder adds NPC, TIER 1 and EXPERT stages while keeping the original EASY/NORMAL/HARD/CUSTOM entry points.
 
 ## HeroBot mapping
 
 The integration is documented in [`docs/HEROBOT_MAPPING.md`](docs/HEROBOT_MAPPING.md).
 
 The implementation follows HeroBot's documented fake-player model: spawn a server-side player, target bots with selectors, then use HeroBot player controls for movement, look, Auto-Jump, path requests, stop/sprint and ping.
+
+## Movement
+
+```mcfunction
+/function theobot:config/movement/autojump_on
+/function theobot:config/movement/autojump_off
+/function theobot:config/movement/stop
+/function theobot:config/movement/wander
+```
 
 ## Diagnostics
 
