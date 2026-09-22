@@ -25,7 +25,10 @@ execute if score @a[tag=theobot,distance=..0.2,limit=1] tb.mode matches 0 if ent
 execute if score @a[tag=theobot,distance=..0.2,limit=1] tb.mode matches 0 unless entity @p[distance=..32,tag=!theobot,gamemode=!spectator] if score @a[tag=theobot,distance=..0.2,limit=1] tb.lastseen matches 1..80 run scoreboard players set @a[tag=theobot,distance=..0.2,limit=1] tb.state 1
 execute if score @a[tag=theobot,distance=..0.2,limit=1] tb.mode matches 0 unless entity @p[distance=..32,tag=!theobot,gamemode=!spectator] if score @a[tag=theobot,distance=..0.2,limit=1] tb.lastseen matches 81.. run scoreboard players set @a[tag=theobot,distance=..0.2,limit=1] tb.state 0
 
-execute if score @a[tag=theobot,distance=..0.2,limit=1] tb.diff matches 0 run scoreboard players set @a[tag=theobot,distance=..0.2,limit=1] tb.timer 5
-execute if score @a[tag=theobot,distance=..0.2,limit=1] tb.diff matches 1 run scoreboard players set @a[tag=theobot,distance=..0.2,limit=1] tb.timer 2
-execute if score @a[tag=theobot,distance=..0.2,limit=1] tb.diff matches 2 run scoreboard players set @a[tag=theobot,distance=..0.2,limit=1] tb.timer 0
-execute if score @a[tag=theobot,distance=..0.2,limit=1] tb.diff matches 3 run scoreboard players set @a[tag=theobot,distance=..0.2,limit=1] tb.timer 3
+execute if score @a[tag=theobot,distance=..0.2,limit=1] tb.diff matches 0 run scoreboard players set @a[tag=theobot,distance=..0.2,limit=1] tb.timer 8
+execute if score @a[tag=theobot,distance=..0.2,limit=1] tb.diff matches 1 run scoreboard players set @a[tag=theobot,distance=..0.2,limit=1] tb.timer 5
+execute if score @a[tag=theobot,distance=..0.2,limit=1] tb.diff matches 2 run scoreboard players set @a[tag=theobot,distance=..0.2,limit=1] tb.timer 3
+execute if score @a[tag=theobot,distance=..0.2,limit=1] tb.diff matches 3 run scoreboard players set @a[tag=theobot,distance=..0.2,limit=1] tb.timer 1
+execute if score @a[tag=theobot,distance=..0.2,limit=1] tb.diff matches 4 run scoreboard players set @a[tag=theobot,distance=..0.2,limit=1] tb.timer 0
+execute if score @a[tag=theobot,distance=..0.2,limit=1] tb.diff matches 5 run scoreboard players set @a[tag=theobot,distance=..0.2,limit=1] tb.timer 0
+execute if score @a[tag=theobot,distance=..0.2,limit=1] tb.diff matches 6 run scoreboard players set @a[tag=theobot,distance=..0.2,limit=1] tb.timer 2
