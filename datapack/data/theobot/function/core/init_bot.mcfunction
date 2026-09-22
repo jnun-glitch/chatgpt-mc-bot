@@ -3,7 +3,7 @@ scoreboard players set @a[tag=theobot,distance=..0.2,limit=1] tb.enabled 1
 scoreboard players set @a[tag=theobot,distance=..0.2,limit=1] tb.state 0
 scoreboard players set @a[tag=theobot,distance=..0.2,limit=1] tb.mode 0
 scoreboard players set @a[tag=theobot,distance=..0.2,limit=1] tb.profile 0
-scoreboard players set @a[tag=theobot,distance=..0.2,limit=1] tb.diff 1
+scoreboard players set @a[tag=theobot,distance=..0.2,limit=1] tb.diff 2
 scoreboard players set @a[tag=theobot,distance=..0.2,limit=1] tb.timer 0
 scoreboard players set @a[tag=theobot,distance=..0.2,limit=1] tb.check 0
 scoreboard players set @a[tag=theobot,distance=..0.2,limit=1] tb.repath 0
@@ -15,6 +15,7 @@ scoreboard players set @a[tag=theobot,distance=..0.2,limit=1] tb.ping 50
 scoreboard players set @a[tag=theobot,distance=..0.2,limit=1] tb.hp 200
 scoreboard players set @a[tag=theobot,distance=..0.2,limit=1] tb.rng 0
 scoreboard players set @a[tag=theobot,distance=..0.2,limit=1] tb.stuck 0
+scoreboard players set @a[tag=theobot,distance=..0.2,limit=1] tb.autojump 1
 execute store result score @a[tag=theobot,distance=..0.2,limit=1] tb.px run data get entity @a[tag=theobot,distance=..0.2,limit=1] Pos[0] 10
 execute store result score @a[tag=theobot,distance=..0.2,limit=1] tb.py run data get entity @a[tag=theobot,distance=..0.2,limit=1] Pos[1] 10
 execute store result score @a[tag=theobot,distance=..0.2,limit=1] tb.pz run data get entity @a[tag=theobot,distance=..0.2,limit=1] Pos[2] 10
