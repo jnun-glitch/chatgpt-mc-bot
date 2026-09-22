@@ -1,0 +1,77 @@
+{
+  "type": "minecraft:multi_action",
+  "title": "TheoBot • Bewegung",
+  "external_title": "TheoBot • Bewegung",
+  "body": {
+    "type": "minecraft:plain_message",
+    "contents": "Bewegungszentrale\nAuto-Jump, sofortiges Stoppen und Wander-Modus lassen sich direkt umschalten.",
+    "width": 360
+  },
+  "pause": false,
+  "after_action": "none",
+  "columns": 2,
+  "actions": [
+    {
+      "label": "🟢 Auto-Jump AN",
+      "tooltip": "Aktiviert HeroBots Auto-Jump für alle TheoBots.",
+      "width": 180,
+      "action": {
+        "type": "run_command",
+        "command": "function theobot:config/movement/autojump_on"
+      }
+    },
+    {
+      "label": "🔴 Auto-Jump AUS",
+      "tooltip": "Deaktiviert HeroBots Auto-Jump für alle TheoBots.",
+      "width": 180,
+      "action": {
+        "type": "run_command",
+        "command": "function theobot:config/movement/autojump_off"
+      }
+    },
+    {
+      "label": "⏹ Alle stoppen",
+      "tooltip": "Stoppt Pfad- und Bewegungssteuerung sofort.",
+      "width": 180,
+      "action": {
+        "type": "run_command",
+        "command": "function theobot:config/movement/stop"
+      }
+    },
+    {
+      "label": "🚶 Wander-Modus",
+      "tooltip": "Schaltet alle Bots auf den intelligenten Wander-Modus.",
+      "width": 180,
+      "action": {
+        "type": "run_command",
+        "command": "function theobot:config/movement/wander"
+      }
+    },
+    {
+      "label": "🧪 Training",
+      "tooltip": "Aktiviert den Trainingsmodus mit Auto-Jump und Navigation.",
+      "width": 180,
+      "action": {
+        "type": "run_command",
+        "command": "function theobot:config/mode/training"
+      }
+    },
+    {
+      "label": "👀 Folgen",
+      "tooltip": "Aktiviert die Zielverfolgung des nächsten passenden Spielers.",
+      "width": 180,
+      "action": {
+        "type": "run_command",
+        "command": "function theobot:config/mode/follow"
+      }
+    }
+  ],
+  "exit_action": {
+    "label": "← Zurück",
+    "width": 180,
+    "action": {
+      "type": "show_dialog",
+      "dialog": "theobot:main"
+    }
+  }
+}
