@@ -4,17 +4,24 @@
   "body": [
     {
       "type": "minecraft:plain_message",
-      "contents": "BEDIENUNG\n\n• Menü öffnen: /function theobot:ui/menu\n• Schnellzugriff: Minecraft Quick Actions\n• Unterseiten: Bots → Verhalten → Schwierigkeit → Profile → Diagnose\n• Alle Aktionen verwenden die vorhandenen TheoBot-Datapack-Funktionen.\n\nARCHITEKTUR\nTheoBot hält Identität, Wahrnehmung, Zustände, Speicher, Navigation, Verhalten, Profile und Diagnose im Datapack. HeroBot übernimmt die serverseitige Fake-Player- und Bewegungssteuerung.\n\nTRAINING\nDer TRAINING-Modus ist auf Bewegung, Blick, Navigation, Auto-Jump und simulierten Ping ausgelegt und enthält keine Angriffs-/Waffenautomatisierung.",
+      "contents": "BEDIENUNG\n\n/function theobot:ui/menu öffnet das Control Center. Die Oberfläche nutzt Minecrafts natives Dialog-System.",
+      "width": 390
+    },
+    {
+      "type": "minecraft:plain_message",
+      "contents": "ARCHITEKTUR\n\nTheoBot verwaltet Identität, Wahrnehmung, Zustände, Memory, Navigation, Verhalten, Profile, Schwierigkeit und Diagnose. HeroBot übernimmt die Fake-Player-Steuerung.",
+      "width": 390
+    },
+    {
+      "type": "minecraft:plain_message",
+      "contents": "VERBESSERUNGEN\n\nMehrstufige Schwierigkeit, Auto-Jump-Schalter, sofortiger globaler Stop, Training, Wander-Modus, Multi-Bot-Zähler und getrennte Debug-Ebenen.",
+      "width": 390
+    },
+    {
+      "type": "minecraft:plain_message",
+      "contents": "TRAINING\n\nDer TRAINING-Modus konzentriert sich auf Bewegung, Blick, Navigation, Auto-Jump und Zielwahrnehmung.",
       "width": 390
     }
   ],
-  "action": {
-    "label": "← Zurück",
-    "action": {
-      "type": "show_dialog",
-      "dialog": "theobot:main"
-    }
-  },
-  "pause": false,
-  "after_action": "none"
+  "pause": false
 }
