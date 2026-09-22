@@ -20,6 +20,9 @@ scoreboard objectives add tb.ping dummy
 scoreboard objectives add tb.hp dummy
 scoreboard objectives add tb.rng dummy
 scoreboard objectives add tb.stuck dummy
+scoreboard objectives add tb.autojump dummy
+scoreboard objectives add tb.bots dummy
+scoreboard objectives add tb.ready dummy
 scoreboard objectives add tb.px dummy
 scoreboard objectives add tb.py dummy
 scoreboard objectives add tb.pz dummy
@@ -31,4 +34,6 @@ scoreboard objectives add tb.dy dummy
 scoreboard objectives add tb.dz dummy
 scoreboard players set #phase tb.phase 18
 scoreboard players set #tick tb.tick 0
+scoreboard players set #bots tb.bots 0
+scoreboard players set #ready tb.ready 0
 tellraw @a [{"text":"[TheoBot] ","color":"gold","bold":true},{"text":"Core loaded.","color":"green"}]
