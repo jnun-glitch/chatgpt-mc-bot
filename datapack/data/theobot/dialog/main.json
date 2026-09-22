@@ -2,11 +2,105 @@
   "type": "minecraft:multi_action",
   "title": "TheoBot • Control Center",
   "external_title": "TheoBot • Control Center",
-  "body": "TheoBot Control Center • modular HeroBot management for Minecraft 1.21.11.",
+  "body": [
+    {
+      "type": "minecraft:plain_message",
+      "contents": "Zentrale Steuerung für deinen modularen HeroBot-Bot.\nWahrnehmung → Entscheidung → Navigation → HeroBot.",
+      "width": 380
+    },
+    {
+      "type": "minecraft:item",
+      "item": {
+        "id": "minecraft:player_head",
+        "count": 1
+      },
+      "description": {
+        "contents": "1.21.11 • Datapack 94.1",
+        "width": 280
+      },
+      "show_decorations": false,
+      "show_tooltip": true,
+      "width": 32,
+      "height": 32
+    }
+  ],
   "pause": false,
   "after_action": "none",
   "columns": 2,
-  "actions": [],
+  "actions": [
+    {
+      "label": "🤖 Bot-Zentrale",
+      "tooltip": "Bots spawnen, Trainingsbots starten, Reset und Entfernen.",
+      "width": 180,
+      "action": {
+        "type": "show_dialog",
+        "dialog": "theobot:bot_menu"
+      }
+    },
+    {
+      "label": "🧠 Verhalten",
+      "tooltip": "AUTO, FOLLOW, TRAINING, WANDER oder STOP.",
+      "width": 180,
+      "action": {
+        "type": "show_dialog",
+        "dialog": "theobot:mode_menu"
+      }
+    },
+    {
+      "label": "⚙ Schwierigkeit",
+      "tooltip": "NPC bis EXPERT plus CUSTOM.",
+      "width": 180,
+      "action": {
+        "type": "show_dialog",
+        "dialog": "theobot:difficulty_menu"
+      }
+    },
+    {
+      "label": "🏃 Bewegung",
+      "tooltip": "Auto-Jump, Stop, Training, Folgen und Wandern.",
+      "width": 180,
+      "action": {
+        "type": "show_dialog",
+        "dialog": "theobot:movement_menu"
+      }
+    },
+    {
+      "label": "🎛 Profile",
+      "tooltip": "BALANCED, AGGRESSIVE, DEFENSIVE, MOBILE oder PASSIVE.",
+      "width": 180,
+      "action": {
+        "type": "show_dialog",
+        "dialog": "theobot:profile_menu"
+      }
+    },
+    {
+      "label": "🔧 Diagnose",
+      "tooltip": "Runtime, State, Target, Path und Tick-System.",
+      "width": 180,
+      "action": {
+        "type": "show_dialog",
+        "dialog": "theobot:diagnostics"
+      }
+    },
+    {
+      "label": "🛑 Sofort stoppen",
+      "tooltip": "Alle Bots sofort anhalten.",
+      "width": 180,
+      "action": {
+        "type": "run_command",
+        "command": "function theobot:config/movement/stop"
+      }
+    },
+    {
+      "label": "📖 Hilfe",
+      "tooltip": "Architektur und Bedienung des Systems.",
+      "width": 180,
+      "action": {
+        "type": "show_dialog",
+        "dialog": "theobot:help"
+      }
+    }
+  ],
   "exit_action": {
     "label": "Schließen",
     "width": 180,
